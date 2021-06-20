@@ -7,5 +7,6 @@
   },
   "repository": "git@github.com:vincentthh35/IR2021-Final.git",
   "author": "vincentthh35 <vincentthh35@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }
