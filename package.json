@@ -1,0 +1,11 @@
+{
+  "name": "final",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd frontend && yarn start"
+  },
+  "repository": "git@github.com:vincentthh35/IR2021-Final.git",
+  "author": "vincentthh35 <vincentthh35@gmail.com>",
+  "license": "MIT"
+}
