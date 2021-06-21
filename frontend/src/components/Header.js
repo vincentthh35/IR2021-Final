@@ -12,11 +12,8 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import SunIcon from '@material-ui/icons/Brightness5';
 import MoonIcon from '@material-ui/icons/Brightness2';
-import AccessibleIcon from '@material-ui/icons/Accessible';
 // routing
 import { Link as RouterLink } from 'react-router-dom';
-
-import { getPoems } from '../axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,9 +40,6 @@ const Header = (props) => {
     <div className={classes.root}>
       <AppBar position='sticky'>
         <Toolbar className={classes.toolbar}>
-          <IconButton onClick={() => getPoems(0, 30)}>
-            <AccessibleIcon />
-          </IconButton>
           <Typography className={classes.title}>
             <Link color='inherit' underline='none' component={RouterLink} to='/'>
               不知道要叫什麼名字

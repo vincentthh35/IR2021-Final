@@ -13,6 +13,17 @@ const getPoems = async (start, end) => {
   }
 };
 
+const getPoemNumber = async () => {
+  try {
+    console.log(`GET: /getPoemNumber\n`);
+    const res = await instance.get('/getPoemNumber');
+    console.log(res.data);
+    return res.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 const submitArticle = async (article) => {
   try {
     console.log(`GET: /submitArticle\narticle: ${article}`);
@@ -24,4 +35,4 @@ const submitArticle = async (article) => {
   }
 }
 
-export { getPoems, submitArticle };
+export { getPoems, submitArticle, getPoemNumber };
