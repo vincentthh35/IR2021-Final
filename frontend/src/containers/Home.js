@@ -137,7 +137,7 @@ const Home = ({ displaySnackMessage }) => {
 
   return (<>
     <Grid container spacing={2}>
-      <Grid item xs={12} style={{ top: '55px', position: 'sticky', zIndex: 500 }}>
+      <Grid item xs={12} style={{ top: '50px', position: 'sticky', zIndex: 500 }}>
         <ArticleInputPaper
           displaySnackMessage={displaySnackMessage}
           inputValue={inputValue}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const instance = axios.create({ baseURL: 'http://localhost:5000/api/' });
+const instance = axios.create({ baseURL: 'http://140.112.30.57:10726/api/' });
 
 const getPoems = async (start, end) => {
   try {

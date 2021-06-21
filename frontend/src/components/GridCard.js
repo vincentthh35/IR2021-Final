@@ -49,12 +49,12 @@ const GridCard = ({ title, content, author, setInputValue }) => {
         <CardContent>
           <Grid container style={{ alignItems: 'baseline' }}>
             <Grid item xs={6}>
-              <Typography variant='h6' inline>
+              <Typography variant='h6'>
                 {title}
               </Typography>
             </Grid>
             <Grid item xs={6}>
-              <Typography variant='subtitle2' inline align='right'>
+              <Typography variant='subtitle2' align='right'>
                 {author}
               </Typography>
             </Grid>
