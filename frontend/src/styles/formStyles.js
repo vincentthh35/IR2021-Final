@@ -8,6 +8,7 @@ export const useFormStyles = makeStyles({
     paddingLeft: '1vw',
     paddingRight: '1vw',
     justifyContent: 'center',
+    display: 'flex',
   },
   gridRoot: {
     padding: 20,
@@ -19,8 +20,20 @@ export const useFormStyles = makeStyles({
     padding: 20,
     display: 'flex',
     justifyContent: 'flex-start',
-    // flexWrap: 'nowrap',
-    // overflowX: 'auto'
+  },
+  paginationRoot: {
+    position: 'fixed',
+    width: '30%',
+    bottom: '2rem',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  paginationPaper: {
+    display: 'flex',
+    height: '3.5rem',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   checkbox: {
     paddingLeft: 0,

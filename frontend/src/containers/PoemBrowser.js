@@ -181,14 +181,17 @@ const PoemBrowser = ({ setInputValue }) => {
               />
             )}
           </Grid>
-          <Grid item xs={12}>
-            <Pagination
-              count={Math.ceil(poemNum.result / 30)}
-              page={currentPage}
-              onChange={handleChange}
-              size='large'
-              classes={pageClasses}
-            />
+          <Grid item xs={12} className={classes.paginationRoot}>
+            <Paper className={classes.paginationPaper} elevation={10}>
+              <Pagination
+                count={Math.ceil(poemNum.result / 30)}
+                page={currentPage}
+                onChange={handleChange}
+                size='large'
+                classes={pageClasses}
+              />
+            </Paper>
+
           </Grid>
         </Paper>
       </Grid>
