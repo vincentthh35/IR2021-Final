@@ -27,6 +27,20 @@ function App() {
   const [snackOpen, setSnackOpen] = useState(false);
   const [snackMessage, setSnackMessage] = useState('');
   const [snackSeverity, setSnaceSeverity] = useState('info');
+  const overrides = {
+    MuiCssBaseline: {
+      '@global': {
+        '*::-webkit-scrollbar': {
+          width: '0.4em'
+        },
+        '*::-webkit-scrollbar-thumb': {
+          backgroundColor: 'rgba(0,0,0,.3)',
+          borderRadius: '5px',
+          border: '1px solid transparent'
+        }
+      }
+    }
+  };
 
   const theme = React.useMemo(
     () => {
@@ -37,12 +51,15 @@ function App() {
             primary: teal,
             secondary: green,
           },
+          overrides,
         });
       } else {
         return createMuiTheme({
           palette: {
             type: 'light',
+            primary: cyan,
           },
+          overrides,
         });
       }
     },
@@ -85,7 +102,7 @@ function App() {
                 userToggleDarkMode={userToggleDarkMode}
                 setUserToggleDarkMode={setUserToggleDarkMode}
               />
-              <Box paddingTop={4} paddingX={0} justifyContent="center" alignItems='center' display='flex'>
+              <Box paddingTop={4} paddingX={0} justifyContent="center" alignItems='center'>
                 <Switch>
                   <Route exact path='/'>
                     <Home displaySnackMessage={displaySnackMessage}/>
