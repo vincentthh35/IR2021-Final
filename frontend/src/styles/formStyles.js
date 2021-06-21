@@ -18,7 +18,9 @@ export const useFormStyles = makeStyles({
   cardGridRoot: {
     padding: 20,
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    // flexWrap: 'nowrap',
+    // overflowX: 'auto'
   },
   checkbox: {
     paddingLeft: 0,

@@ -31,7 +31,7 @@ function App() {
     MuiCssBaseline: {
       '@global': {
         '*::-webkit-scrollbar': {
-          width: '0.4em'
+          width: '0.3em'
         },
         '*::-webkit-scrollbar-thumb': {
           backgroundColor: 'rgba(0,0,0,.3)',

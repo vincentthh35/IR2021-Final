@@ -1,30 +1,15 @@
 import {
   Grid,
-  TextField,
-  Button,
   Paper,
   Typography,
-  Card,
-  CardContent,
-  Divider,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { useFormStyles } from '../styles';
-import { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
 
-import ArticleInputPaper from './ArticleInputPaper';
-import PoemBrowser from './PoemBrowser';
 import GridCard from '../components/GridCard';
 
-const Home = ({ displaySnackMessage }) => {
-  const classes = useFormStyles();
-  const [inputValue, setInputValue] = useState('');
+import { useFormStyles } from '../styles';
 
-  const {
-    handleSubmit, control, reset,
-    formState: { errors }
-  } = useForm();
+const PoemBrowser = ({ setInputValue }) => {
+  const classes = useFormStyles();
 
   const poemList = [
     {
@@ -131,26 +116,31 @@ const Home = ({ displaySnackMessage }) => {
     }
   ];
 
-  const onInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  return (<>
+  return (
     <Grid container spacing={2}>
-      <Grid item xs={12} style={{ top: '55px', position: 'sticky', zIndex: 500 }}>
-        <ArticleInputPaper
-          displaySnackMessage={displaySnackMessage}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-        />
-      </Grid>
       <Grid item xs={12}>
-        <PoemBrowser
-          setInputValue={setInputValue}
-        />
+        <Paper className={classes.paperRoot}>
+          <Grid container spacing={3} className={classes.cardGridRoot}>
+            <Grid item xs={12}>
+              <Typography variant='h6'>
+                範例詩集
+              </Typography>
+            </Grid>
+            {poemList.map((e, i) =>
+              <GridCard
+                title={e.title}
+                content={e.content.trim().split('\n').map((e) => e.trim()).join('\n')}
+                author={e.author}
+                setInputValue={setInputValue}
+                id={`grid-card-${i}`}
+                key={`grid-card-${i}`}
+              />
+            )}
+          </Grid>
+        </Paper>
       </Grid>
     </Grid>
-  </>);
+  );
 };
 
-export default Home;
+export default PoemBrowser;

@@ -41,10 +41,10 @@ const GridCard = ({ title, content, author, setInputValue }) => {
       setOpen={setOpen}
       setInputValue={setInputValue}
       title={title}
-      content={content.trim().split('\n').map((e) => e.trim()).join('\n')}
+      content={content}
       author={author}
     />
-    <Grid item xs={12} lg={4} xl={3}>
+    <Grid item xs={12} lg={4} xl={3} style={{ minWidth: '300px' }}>
       <Card variant='outlined'>
         <CardContent>
           <Grid container style={{ alignItems: 'baseline' }}>

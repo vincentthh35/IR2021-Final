@@ -10,6 +10,8 @@ import { useFormStyles } from '../styles';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
+import { submitArticle } from '../axios';
+
 const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) => {
   const classes = useFormStyles();
 
@@ -52,12 +54,17 @@ const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) =
     setInputValue(e.target.value);
   };
 
+  const customValidate = () => {
+    if (inputValue.trim() === '') return false;
+    else return true;
+  };
+
   const onSubmit = (data) => {
-    console.log(data);
+    submitArticle(inputValue)
   };
 
   return (
-    <Paper className={classes.paperRoot} style={{ top: '55px', position: 'sticky', zIndex: 500 }}>
+    <Paper className={classes.paperRoot}>
       <form style={{ width: '100%' }} autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2} className={classes.gridRoot}>
           <Grid item xs={12}>
@@ -70,7 +77,7 @@ const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) =
               name="article"
               control={control}
               defaultValue=''
-              rules={{ required: true }}
+              rules={{ validate: customValidate }}
               render={(props) => (
                 <TextField
                   {...props.field}
