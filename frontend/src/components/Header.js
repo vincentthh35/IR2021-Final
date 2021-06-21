@@ -12,8 +12,11 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import SunIcon from '@material-ui/icons/Brightness5';
 import MoonIcon from '@material-ui/icons/Brightness2';
+import AccessibleIcon from '@material-ui/icons/Accessible';
 // routing
 import { Link as RouterLink } from 'react-router-dom';
+
+import { getPoems } from '../axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,24 +43,14 @@ const Header = (props) => {
     <div className={classes.root}>
       <AppBar position='sticky'>
         <Toolbar className={classes.toolbar}>
-          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
+          <IconButton onClick={() => getPoems(0, 30)}>
+            <AccessibleIcon />
+          </IconButton>
           <Typography className={classes.title}>
             <Link color='inherit' underline='none' component={RouterLink} to='/'>
               不知道要叫什麼名字
             </Link>
           </Typography>
-          {/* <Tooltip title='Register'>
-            <Button color="inherit" component={RouterLink} to='/register'>
-              註冊
-            </Button>
-          </Tooltip>
-          <Tooltip title='Login'>
-            <Button color="inherit" component={RouterLink} to='/login'>
-              登入
-            </Button>
-          </Tooltip> */}
           <Tooltip title='Toggle light/dark theme'>
             <IconButton onClick={() => props.setUserToggleDarkMode(!props.userToggleDarkMode)}>
               { props.userToggleDarkMode ? <SunIcon /> : <MoonIcon /> }
