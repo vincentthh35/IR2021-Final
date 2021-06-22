@@ -24,7 +24,7 @@ export const useFormStyles = makeStyles({
   paginationRoot: {
     position: 'fixed',
     width: '30%',
-    bottom: '2rem',
+    bottom: '1rem',
     display: 'flex',
     justifyContent: 'center',
   },
