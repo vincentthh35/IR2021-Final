@@ -9,16 +9,21 @@ import os
 import subprocess
 import csv
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/build/')
 app.config['JSON_AS_ASCII'] = False
 
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/', methods=['GET'])
+@app.route('/', defaults={'path': ''}, methods=['GET'])
+@app.route('/<path:path>')
 @cross_origin()
-def index():        
-    return '<html><h1>住手！！！！</h1></html>'
+def serve(path):
+    if path != '' and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+    # return '<html><h1>住手！！！！</h1></html>'
 
 @app.route('/api/getPoems/', methods=['GET'])
 @cross_origin()
@@ -70,8 +75,8 @@ def getMusic():
                 yield data
                 data = fwav.read(1024)
     
-    return Response(generate(), mimetype="audio/x-wav")
-    # return send_from_directory('', f'{id}.wav')
+    # return Response(generate(), mimetype="audio/x-wav")
+    return send_from_directory('/tmp2/IRgroup1/final/musics', f'{id}.wav')
 
 @app.route('/api/getLyrics')
 @cross_origin()
