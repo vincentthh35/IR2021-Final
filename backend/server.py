@@ -85,4 +85,4 @@ def getLyrics():
     return send_from_directory('/tmp2/IRgroup1/final/lyrics/', f'{id}.txt')
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="10725", debug=True)
+    app.run(host="0.0.0.0", port="10726", debug=True)
