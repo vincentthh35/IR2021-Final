@@ -28,7 +28,7 @@ const ReadMoreDialog = ({ open, setOpen, setInputValue, ...props }) => {
       maxWidth={'sm'}
       open={open}
       onClose={handleClose}
-      PaperProps={{ style: { paddingTop: '0.5rem' } }}
+      PaperProps={{ style: { paddingTop: '0.5rem', paddingBottom: '0.3rem' } }}
       aria-labelledby="max-width-dialog-title"
     >
       <DialogTitle>
