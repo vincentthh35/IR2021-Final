@@ -10,14 +10,18 @@ import { useFormStyles } from '../styles';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-import ReactPlayer from 'react-player';
+import ReactAudioPlayer from 'react-audio-player'
 
-import { submitArticle, getMusic, getLyrics } from '../axios';
+import { submitArticle, getMusicURL, getLyrics } from '../axios';
+import ArticleLyricsDialog from '../components/ArticleLyricsDialog';
 
 const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) => {
   const classes = useFormStyles();
 
   const [audioURL, setAudioURL] = useState('');
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [inputArticle, setInputArticle] = useState('');
+  const [songId, setSongId] = useState(null);
 
   const {
     handleSubmit, control, reset,
@@ -64,24 +68,24 @@ const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) =
   };
 
   const onSubmit = async (data) => {
-    submitArticle(inputValue);
-    const songId = 20;
-    const f = async () => {
-      return await getMusic(20);
-    }
-    // console.log(f());
-    const ff = await f();
-    console.log(ff);
-    setAudioURL(ff);
+    // set article
+    setInputArticle(inputValue);
+    console.log();
+    setDialogOpen(true);
+    const songId = (await submitArticle(inputValue)).id;
+    setSongId(songId);
   };
 
-  return (
+  return (<>
+    <ArticleLyricsDialog
+      open={dialogOpen}
+      setOpen={setDialogOpen}
+      poem={inputArticle}
+      songId={songId}
+    />
     <Paper className={classes.paperRoot}>
       <form style={{ width: '100%' }} autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2} className={classes.gridRoot}>
-          <Grid item>
-            <ReactPlayer url={audioURL} />
-          </Grid>
           <Grid item xs={12}>
             <Typography variant='h6'>
               輸入文章
@@ -137,7 +141,7 @@ const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) =
         </Grid>
       </form>
     </Paper>
-  );
+  </>);
 };
 
 export default ArticleInputPaper;

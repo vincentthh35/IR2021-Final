@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const instance = axios.create({ baseURL: 'http://140.112.30.57:10726/api/' });
+const baseURL = 'http://140.112.30.57:10726/api/';
+const instance = axios.create({ baseURL });
 
 const getPoems = async (start, end) => {
   try {
@@ -35,26 +36,8 @@ const submitArticle = async (article) => {
   }
 };
 
-const getMusic = async (songId) => {
-  try {
-    console.log(`GET: /getMusic\nsongId: ${songId}`);
-    const res = await instance.get('/getMusic', {
-      params: { id: songId },
-      responseType: 'arraybuffer',
-      headers: {
-        'Content-Type': 'audio/wav',
-      }
-    });
-    const blob = new Blob([res.data], {
-      type: 'audio/wav',
-    });
-    const url = URL.createObjectURL(blob);
-    // console.log(res.data);
-    console.log(url.slice(5));
-    return url.slice(5);
-  } catch (e) {
-    console.log(e);
-  }
+const getMusicURL = (songId) => {
+  return `${baseURL}getMusic?id=${songId}`;
 };
 
 const getLyrics = async (songId) => {
@@ -68,4 +51,4 @@ const getLyrics = async (songId) => {
   }
 };
 
-export { getPoems, submitArticle, getPoemNumber, getMusic, getLyrics };
+export { getPoems, submitArticle, getPoemNumber, getMusicURL, getLyrics };
