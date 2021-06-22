@@ -10,10 +10,14 @@ import { useFormStyles } from '../styles';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-import { submitArticle } from '../axios';
+import ReactPlayer from 'react-player';
+
+import { submitArticle, getMusic, getLyrics } from '../axios';
 
 const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) => {
   const classes = useFormStyles();
+
+  const [audioURL, setAudioURL] = useState('');
 
   const {
     handleSubmit, control, reset,
@@ -59,14 +63,25 @@ const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) =
     else return true;
   };
 
-  const onSubmit = (data) => {
-    submitArticle(inputValue)
+  const onSubmit = async (data) => {
+    submitArticle(inputValue);
+    const songId = 20;
+    const f = async () => {
+      return await getMusic(20);
+    }
+    // console.log(f());
+    const ff = await f();
+    console.log(ff);
+    setAudioURL(ff);
   };
 
   return (
     <Paper className={classes.paperRoot}>
       <form style={{ width: '100%' }} autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2} className={classes.gridRoot}>
+          <Grid item>
+            <ReactPlayer url={audioURL} />
+          </Grid>
           <Grid item xs={12}>
             <Typography variant='h6'>
               輸入文章

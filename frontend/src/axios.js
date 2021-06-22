@@ -33,6 +33,39 @@ const submitArticle = async (article) => {
   } catch (e) {
     console.log(e);
   }
-}
+};
 
-export { getPoems, submitArticle, getPoemNumber };
+const getMusic = async (songId) => {
+  try {
+    console.log(`GET: /getMusic\nsongId: ${songId}`);
+    const res = await instance.get('/getMusic', {
+      params: { id: songId },
+      responseType: 'arraybuffer',
+      headers: {
+        'Content-Type': 'audio/wav',
+      }
+    });
+    const blob = new Blob([res.data], {
+      type: 'audio/wav',
+    });
+    const url = URL.createObjectURL(blob);
+    // console.log(res.data);
+    console.log(url.slice(5));
+    return url.slice(5);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+const getLyrics = async (songId) => {
+  try {
+    console.log(`GET /getLyrics\nsongId: ${songId}`);
+    const res = await instance.get('/getLyrics', { params: { id: songId } });
+    console.log(res.data);
+    return res.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export { getPoems, submitArticle, getPoemNumber, getMusic, getLyrics };

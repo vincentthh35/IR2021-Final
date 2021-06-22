@@ -12,7 +12,6 @@ import {
 } from '@material-ui/core';
 
 const ReadMoreDialog = ({ open, setOpen, setInputValue, ...props }) => {
-  // const [open, setOpen] = useState(true);
 
   const handleClose = () => {
     setOpen(false);

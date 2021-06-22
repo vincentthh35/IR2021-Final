@@ -97,20 +97,20 @@ function App() {
       <Container fixed style={{ paddingTop: '20px' }}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Router>
+            {/* <Router> */}
               <Header
                 userToggleDarkMode={userToggleDarkMode}
                 setUserToggleDarkMode={setUserToggleDarkMode}
               />
               <Box paddingTop={4} paddingX={0} justifyContent="center" alignItems='center'>
-                <Switch>
-                  <Route exact path='/'>
+                {/* <Switch> */}
+                  {/* <Route exact path='/home'> */}
                     <Home displaySnackMessage={displaySnackMessage}/>
-                  </Route>
+                  {/* </Route> */}
                   {/* add other routing path by <Route path='??'>...</Route> */}
-                </Switch>
+                {/* </Switch> */}
               </Box>
-            </Router>
+            {/* </Router> */}
           </Grid>
         </Grid>
       </Container>

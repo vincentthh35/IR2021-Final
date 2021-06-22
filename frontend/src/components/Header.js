@@ -41,7 +41,7 @@ const Header = (props) => {
       <AppBar position='sticky'>
         <Toolbar className={classes.toolbar}>
           <Typography className={classes.title}>
-            <Link color='inherit' underline='none' component={RouterLink} to='/'>
+            <Link color='inherit' underline='none' to='/'>
               不知道要叫什麼名字
             </Link>
           </Typography>
