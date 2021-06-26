@@ -42,7 +42,7 @@ const Header = (props) => {
         <Toolbar className={classes.toolbar}>
           <Typography className={classes.title}>
             <Link color='inherit' underline='none' to='/'>
-              不知道要叫什麼名字
+              IR Final Project
             </Link>
           </Typography>
           <Tooltip title='Toggle light/dark theme'>
