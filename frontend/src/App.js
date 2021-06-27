@@ -13,13 +13,7 @@ import Alert from '@material-ui/lab/Alert';
 import { spacing } from '@material-ui/system';
 import Header from './components/Header';
 import Home from './containers/Home';
-import { lightBlue, cyan, teal, green } from '@material-ui/core/colors'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { lightBlue, cyan, teal, green } from '@material-ui/core/colors';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -97,20 +91,13 @@ function App() {
       <Container fixed style={{ paddingTop: '20px' }}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            {/* <Router> */}
-              <Header
-                userToggleDarkMode={userToggleDarkMode}
-                setUserToggleDarkMode={setUserToggleDarkMode}
-              />
-              <Box paddingTop={4} paddingX={0} justifyContent="center" alignItems='center'>
-                {/* <Switch> */}
-                  {/* <Route exact path='/home'> */}
-                    <Home displaySnackMessage={displaySnackMessage}/>
-                  {/* </Route> */}
-                  {/* add other routing path by <Route path='??'>...</Route> */}
-                {/* </Switch> */}
-              </Box>
-            {/* </Router> */}
+            <Header
+              userToggleDarkMode={userToggleDarkMode}
+              setUserToggleDarkMode={setUserToggleDarkMode}
+            />
+            <Box paddingTop={4} paddingX={0} justifyContent="center" alignItems='center'>
+              <Home displaySnackMessage={displaySnackMessage}/>
+            </Box>
           </Grid>
         </Grid>
       </Container>
