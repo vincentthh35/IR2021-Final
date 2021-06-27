@@ -12,8 +12,6 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import SunIcon from '@material-ui/icons/Brightness5';
 import MoonIcon from '@material-ui/icons/Brightness2';
-// routing
-import { Link as RouterLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,9 +39,7 @@ const Header = (props) => {
       <AppBar position='sticky'>
         <Toolbar className={classes.toolbar}>
           <Typography className={classes.title}>
-            <Link color='inherit' underline='none' to='/'>
-              IR Final Project
-            </Link>
+            IR Final Project
           </Typography>
           <Tooltip title='Toggle light/dark theme'>
             <IconButton onClick={() => props.setUserToggleDarkMode(!props.userToggleDarkMode)}>

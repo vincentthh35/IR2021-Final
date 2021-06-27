@@ -41,7 +41,7 @@ const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) =
           const result = reader.result.trim();
           // filter word number
           if (result.length <= 5000) {
-            setInputValue(reader.result.trim());
+            setInputValue(result);
           } else {
             displaySnackMessage(`Too much words! (${result.length} words total)`, 'error');
             console.error(`Too much words! (${result.length} words total)`);
@@ -70,7 +70,6 @@ const ArticleInputPaper = ({ displaySnackMessage, inputValue, setInputValue }) =
   const onSubmit = async (data) => {
     // set article
     setInputArticle(inputValue);
-    console.log();
     setDialogOpen(true);
     const songId = (await submitArticle(inputValue)).id;
     setSongId(songId);

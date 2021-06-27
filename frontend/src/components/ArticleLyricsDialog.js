@@ -15,12 +15,6 @@ import ReactAudioPlayer from 'react-audio-player';
 import { useAsync } from 'react-async-hook';
 import { submitArticle, getLyrics } from '../axios';
 
-// const fetchSongId = async (poem) => {
-//   if (poem != '') {
-//     // return await submitArticle(poem);
-//   }
-// };
-
 const fetchLyrics = async (songId) => {
   if (songId) {
     return await getLyrics(songId);
